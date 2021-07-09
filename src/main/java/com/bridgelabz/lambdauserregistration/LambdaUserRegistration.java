@@ -11,9 +11,9 @@ interface Registration {
 public class LambdaUserRegistration {
 	public static void main(String[] args) {
 		Registration FirstName = firstName -> Pattern.matches(NAME_PATTERN, firstName);
-		Registration validateLastName = lastName -> Pattern.matches(NAME_PATTERN, lastName);
+		Registration LastName = lastName -> Pattern.matches(NAME_PATTERN, lastName);
 		System.out.println(printResult(FirstName.validate(validFirstName())));
-		System.out.println(printResult(validateLastName.validate(validLastName())));
+		System.out.println(printResult(LastName.validate(validLastName())));
 	}
 
 	private static final String NAME_PATTERN = ("^[A-Z]{1}[a-z]{2}$");
