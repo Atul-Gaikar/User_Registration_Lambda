@@ -10,18 +10,23 @@ interface Registration {
 
 public class LambdaUserRegistration {
 	public static void main(String[] args) {
-		Registration LastName = lastName -> Pattern.matches(NAME_PATTERN, lastName);
-		System.out.println(printResult(LastName.validate(validLastName())));
+		Registration FirstName = firstName -> Pattern.matches(NAME_PATTERN, firstName);
+		Registration validateLastName = lastName -> Pattern.matches(NAME_PATTERN, lastName);
+		System.out.println(printResult(FirstName.validate(validFirstName())));
+		System.out.println(printResult(validateLastName.validate(validLastName())));
 	}
 
 	private static final String NAME_PATTERN = ("^[A-Z]{1}[a-z]{2}$");
 	static Scanner input = new Scanner(System.in);
 
+	private static String validFirstName() {
+		System.out.println("Enter the First Name");
+		return input.nextLine();
+	}
 	private static String validLastName() {
 		System.out.println("Enter the Last Name");
 		return input.nextLine();
 	}
-
 	public static String printResult(Boolean result) {
 		if (Boolean.TRUE.equals(result))
 			return "Your Entry is Valid";
